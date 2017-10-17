@@ -11,7 +11,8 @@ const locationController = require('./server-mongoose/controllers/locationContro
 const yelpApi = require('./controllers/yelpApi');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://teamwind:teamwind@ds119585.mlab.com:19585/trvlr');
+// mongoose.connect('mongodb://teamwind:teamwind@ds119585.mlab.com:19585/trvlr');
+mongoose.connect('mongodb://pinkfairyarmadillo:pinkfairyarmadillo@ds121535.mlab.com:21535/pinkfairyarmadillo');
 mongoose.connection.once('open', (err, success) => {
   if (err) console.log('NOOOOOOOO');
   console.log('CONNECTED YAYYYYY');
