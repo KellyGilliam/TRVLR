@@ -14,19 +14,69 @@ userController.createUser = (req, res) => {
                 User.create({
                     username: req.body.username,
                     password: req.body.password
-                }, (err, doc) => {
+                }, 
+                (err, doc) => {
                     if (err) {
                         res.send(err);
                     } else {
+                        console.log(doc);
+                        res.cookie('SSID', doc._id);
                         res.send(doc);
+                        // res.cookie('SSID', doc._id);
+                        // console.log(doc._id);
+                        // let cookieID = doc._id;
                     }
                 });
+                //make get request with these credentials to get associated ID.
             }
             else {
                 res.send(err);
             }
         })
 }
+
+//BEFORE ADDING GET REQUEST AND RES.COOKIE:
+
+// userController.createUser = (req, res) => {
+//     if (req.body.username && req.body.password) {
+//         User.findOne({username:req.body.username}, function(err, found) {
+//             if (!found) {
+//                 User.create({
+//                     username: req.body.username,
+//                     password: req.body.password
+//                 }, (err, doc) => {
+//                     if (err) {
+//                         res.send(err);
+//                     } else {
+//                         res.send(doc);
+//                     }
+//                 });
+//             }
+//             else {
+//                 res.send(err);
+//             }
+//         })
+// }
+
+
+// userController.setCookie = (req,res) => {
+//     User.findOne({username:req.body.username, password:req.body.password}, function(err,find) {
+//         if(err) {
+//             console.log("dv err", err)
+//             res.send(err)
+//         }
+//         if(find) {
+//             console.log(res._id)
+//             res.cookie('SSID', res._id);
+//         }
+//         if(!find) {
+//             console.log('keyll')
+//         }
+//     })
+// }
+
+
+
     // let login = new User(req.body)
     // login.username = req.body.username;
     // login.password = req.body.password;
